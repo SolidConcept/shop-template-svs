@@ -1,0 +1,27 @@
+.testWrapper{
+    .stickyImg {
+        background-color: #f4f4f8;
+        padding: 0;
+        display: flex;
+        align-items: stretch;
+        justify-content: space-between;
+
+        figure {
+            width: 50%;
+            img {
+                position: sticky;
+                top: 0;
+                max-height: 100vh;
+            }
+        }
+        .text {
+            width: calc(50% - 20px);
+            max-width: calc(1400px / 2 + 20px);
+            padding: 50px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
+}

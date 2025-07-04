@@ -1,0 +1,96 @@
+.mod_meganav {
+  font: normal 16px/24px "Raleway", sans-serif;
+  margin-bottom: 5px !important;
+}
+
+.mod_meganav > ul > li {
+  vertical-align: middle;
+}
+
+.mod_meganav > ul > li.active > a {
+  background: #feb207;
+  color: #fff !important;
+}
+
+.mod_meganav .megaNavFlyOut > .wrapper .mod_newslist .layout_latest {
+  border: 1px solid #dedeea;
+  -webkit-box-shadow: 3px 3px 4px 1px rgba(0, 0, 0, 0.12);
+          box-shadow: 3px 3px 4px 1px rgba(0, 0, 0, 0.12);
+  background: #fff;
+  -webkit-transition: transform 0.4s;
+  -webkit-transition: -webkit-transform 0.4s;
+  transition: -webkit-transform 0.4s;
+  transition: transform 0.4s;
+  transition: transform 0.4s, -webkit-transform 0.4s;
+}
+
+.mod_meganav .megaNavFlyOut > .wrapper .mod_newslist .layout_latest .ce_text {
+  position: relative;
+  float: left;
+  width: 100%;
+  padding: 10px 14px;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.mod_meganav .megaNavFlyOut > .wrapper .mod_newslist .layout_latest .ce_text .headline {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-height: 39px;
+  font: normal 16px/24px "Raleway", sans-serif;
+  line-height: 1.3;
+  text-align: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.mod_meganav .megaNavFlyOut > .wrapper .mod_newslist .layout_latest .ce_text .headline a {
+  font-weight: bold;
+  text-decoration: none;
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #565656 !important;
+}
+
+.mod_meganav .megaNavFlyOut > .wrapper .mod_newslist .layout_latest .ce_text .headline::after {
+  content: '\f105';
+  font-family: "Font Awesome 5 Free";
+  font-size: 17px;
+  font-weight: 900;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.mod_meganav .megaNavFlyOut > .wrapper .mod_newslist .layout_latest:hover {
+  -webkit-transform: scale(1.04);
+  transform: scale(1.04);
+}
+
+.mod_meganav .megaNavFlyOut > .wrapper .mod_newslist .layout_latest:hover figure img {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+@media screen and (max-width: 1400px) {
+  .mod_meganav > ul > li > a {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .mod_meganav .megaNavFlyOut > .wrapper > .box30:last-child,
+  .mod_meganav .megaNavFlyOut .flyoutHeader {
+    display: none !important;
+  }
+}
