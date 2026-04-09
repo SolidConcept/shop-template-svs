@@ -1,5 +1,6 @@
 {extends file="../../NOVA/checkout/inc_billing_address_form.tpl"}
 
+
 {block name='checkout-inc-billing-address-form-company-wrap'}
     <div class="infoWrapper">
         {if $smarty.session.kSprache == 1}
@@ -100,6 +101,21 @@
             {/if}
         </p>
         <div class="w-100-util"></div>
+    </div>
+{/block}
+
+{block name='checkout-inc-billing-address-form-country' append}
+    <div class="alert alert-warning versandAusland billing_address-country_alert">
+        <i class="fas fa-info"></i>
+        {if $smarty.session.kSprache == 1}
+            <p><strong>Versand nur innerhalb Deutschlands verfügbar</strong><br>Bitte hinterlegen Sie eine entsprechende Lieferadresse.<br>
+                <a href="/lieferungen-ausserhalb-deutschlands">Details zu internationalen Lieferungen erhalten Sie <strong>hier</strong></a>
+            </p>
+        {else}
+           <p><strong>Shipping only available within Germany</strong><br>Please provide a corresponding delivery address.<br>
+                <a href="/shipping-outside-germany">You can find details about international deliveries <strong>here</strong></a>
+            </p>
+        {/if}
     </div>
 {/block}
 

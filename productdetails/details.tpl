@@ -1,13 +1,14 @@
 {extends file="{$parent_template_path}/productdetails/details.tpl"}
 
-{block name='productdetails-details-include-image' prepend}
+{* {block name='productdetails-details-include-image' prepend}
     {col cols=12}
     <h1 class="product-title h2 d-block d-md-none" itemprop="name">{$Artikel->cName}</h1>
     {/col}
-{/block}
+{/block} *}
 {block name='productdetails-details-info-product-title'}
     {opcMountPoint id='opc_before_headline'}
-    <h1 class="product-title h2 d-none d-md-block" itemprop="name">{$Artikel->cName}</h1>
+    {* <h1 class="product-title h2 d-none d-md-block" itemprop="name">{$Artikel->cName}</h1> *}
+    <h1 class="product-title h2" itemprop="name">{$Artikel->cName}</h1>
 {/block}
 
 {* Individuelle Kategorie-Links *}
@@ -61,6 +62,30 @@
 {/block} *}
 
 {block name='productdetails-details-info' append}
+    {* Fachhandelskonditionen + Versand außerhalb DE *}
+    {* <div class="extraInfos">
+        {row}
+            {col cols=12}
+                <div class="fachhandelskonditionen">
+                    {if $smarty.session.kSprache == 1}
+                        <a href="/fachhandelskonditionen"><i class="fas fa-info"></i> <strong>Zu unseren Fachhandelskonditionen</strong> <i class="fas fa-arrow-right"></i></a>
+                    {else}
+                        <a href="/specialist-trade-conditions"><i class="fas fa-info"></i> <strong>To our specialised trade conditions</strong> <i class="fas fa-arrow-right"></i></a>
+                    {/if}
+                </div>
+            {/col}
+            {col cols=12}
+                <div class="versandNichtDe">
+                    {if $smarty.session.kSprache == 1}
+                        <a href="/lieferungen-ausserhalb-deutschlands"><i class="fas fa-box"></i> <strong>Information zu Lieferungen außerhalb Deutschlands</strong> <i class="fas fa-arrow-right"></i></a>
+                    {else}
+                        <a href="/shipping-outside-germany"><i class="fas fa-box"></i> <strong>Information on deliveries outside Germany</strong> <i class="fas fa-arrow-right"></i></a>
+                    {/if}
+                </div>
+            {/col}
+        {/row}
+    </div> *}
+
     {* USPS *}
     {include file='snippets/sc_usps.tpl'}
 

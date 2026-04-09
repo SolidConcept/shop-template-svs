@@ -4,7 +4,7 @@
 
     {* Überschrift *}
     <div id="technische-daten"></div>
-    <p class="h3">{lang key="technische-daten" section="global"}</p>
+    <h2 class="h3">{lang key="technische-daten" section="global"}</h2>
 
     {* Wrapper *}
     <div class="tableWrapper">

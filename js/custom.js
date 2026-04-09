@@ -93,6 +93,10 @@ function initJumpingNav(jumpingNavOffset) {
         if ($('#passende').length == 0) {
             $('.jumpingNav .passende').hide();
         }
+
+        if ($('#vergleich').length == 0) {
+            $('.jumpingNav .vergleich').hide();
+        }
     }
 }
 
@@ -111,6 +115,71 @@ function updateCarouselClasses() {
     });
 }
 
+
+function readMore() {
+    $('.readmore').each(function () {
+        const $button = $(this);
+        const $parent = $button.parent();
+        const $siblings = $parent.nextAll(); // Alle Geschwister nach dem Button
+        const $toggleWrapper = $button.closest('.toggleWrapper');
+        const $scToggler = $toggleWrapper.prev('.scToggler');
+
+        const isMobile = window.matchMedia("(max-width: 576px)").matches;
+
+        // Wenn auf Mobilgerät UND .scToggler hat Klasse "active", zeige alles
+        if (isMobile && $scToggler.hasClass('active')) {
+            $siblings.show(); // sofort zeigen
+            $button.hide();   // Button ausblenden
+        } else {
+            $siblings.hide(); // verstecke standardmäßig
+            $button.on('click', function () {
+                $siblings.slideDown();
+                $button.hide();
+            });
+        }
+    });
+
+        $('.scToggler').on('click', function () {
+        $(this).toggleClass('active');
+        $(this).next('.toggleWrapper').toggleClass('smarthide');
+
+        // Nach Umschalten neu prüfen, ob wir auf Mobilgerät sind
+        if (window.matchMedia("(max-width: 576px)").matches && $(this).hasClass('active')) {
+            const $toggleWrapper = $(this).next('.toggleWrapper');
+            const $button = $toggleWrapper.find('.readmore');
+            const $siblings = $button.parent().nextAll();
+
+            $siblings.show(); // sofort zeigen
+            $button.hide();   // Button ausblenden
+        }
+    });
+}
+
+function shippingAdressAlertToggle() {
+    var $countrySelect = $('#billing_address-country');
+    var $alert = $('.billing_address-country_alert');
+
+    if ($alert.length) {
+        function checkCountry() {
+            var selectedCountry = $countrySelect.val();
+            if (selectedCountry && selectedCountry !== 'DE') {
+                $alert.show();
+            } else {
+                $alert.hide();
+            }
+        }
+
+        // Direkt prüfen
+        checkCountry();
+
+        // Bei Änderung erneut prüfen
+        $countrySelect.on('change', checkCountry);
+    }
+}
+
+
+
+
 // Initialisieren beim Laden und bei Änderungen der Fenstergröße
 updateCarouselClasses();
 $(window).resize(updateCarouselClasses);
@@ -120,6 +189,9 @@ $(window).resize(updateCarouselClasses);
 
 initMenu();
 sameHeight();
+
+readMore();
+shippingAdressAlertToggle();
 
 
 // offset der fixed jumpingNav 

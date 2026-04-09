@@ -16,6 +16,11 @@
     </div>
 {/block}
 
+{* Neuer OPC-Mount analog zu before_main *}
+{block name='layout-footer-main-wrapper-closingtag' prepend}
+     {opcMountPoint id='opc_sc_after_main' inContainer=false}
+{/block}
+
 {block name='layout-footer-copyright'}
     <div id="copyright">
         {* container nicht fluid *}

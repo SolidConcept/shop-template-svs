@@ -13,8 +13,11 @@
       <li class="downloads">
         <a href="{$Artikel->cURLFull}#downloads" class="scrollTo">{lang key="downloads" section="global"}</a>
       </li>
+      <li class="vergleich">
+        <a href="{$Artikel->cURLFull}#vergleich" class="scrollTo">{lang key="vergleich" section="custom"}</a>
+      </li>
       <li class="anwendungen">
-        <a href="{$Artikel->cURLFull}#anwendungen" class="scrollTo">{lang key="anwendungen" section="global"}</a>
+        <a href="{$Artikel->cURLFull}#anwendungen" class="scrollTo">{lang key="anwendungen" section="custom"}</a>
       </li>
       <li class="passende">
         <a href="{$Artikel->cURLFull}#passende" class="scrollTo">{lang key="passende" section="global"}</a>
@@ -39,7 +42,7 @@
                               "controls" => "tab-description"
                           ]
                       } *}
-                          <h3>{lang key='description' section='productDetails'}</h3>
+                          <h2 class="h3">{lang key='description' section='productDetails'}</h2>
                       {* {/cardheader} *}
                       {collapse id="tab-description"|cat:$quickViewIdPostfix
                                 visible=$setActiveClass.description
@@ -90,7 +93,7 @@
             {if $useMediaGroup}
                 {block name='productdetails-tabs-media-gorup'}
                     <div id="downloads">
-                        <p class="h3">{lang section='productDownloads' key='downloadSection'}</p>
+                        <h2 class="h3">{lang section='productDownloads' key='downloadSection'}</h2>
 
                     {foreach $Artikel->getMediaTypes() as $mediaType}
                         {$cMedienTypId = $mediaType->name|seofy}
@@ -128,7 +131,7 @@
             {* SC Anwendungen *}
             <div id="anwendungen">
                 <hr>
-                <p class="h3">{lang section='custom' key='anwendungen'}</p>
+                <h2 class="h3">{lang section='custom' key='anwendungen'}</h2>
                 <div class="innerWrapper">{opcMountPoint id='opc_anwendungen'}</div>
             </div>
 
