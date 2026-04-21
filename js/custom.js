@@ -100,6 +100,30 @@ function initJumpingNav(jumpingNavOffset) {
     }
 }
 
+function removeTabCard() {
+    if ($('#downloads').length == 0 || ($('#downloads .mediafiles').html().trim() == '' && $('#downloads .innerWrapper').html().trim() == '')) {
+            $('#downloads').hide();
+        }
+
+    if ($('#anwendungen').length == 0 || $('#anwendungen .innerWrapper').html().trim() == '') {
+        $('#anwendungen').hide();
+    }
+}
+
+
+// function updateCarouselClasses() {
+//     $('.carousel:not(.slick-initialized)').each(function() {
+//         var $carousel = $(this);
+//         var numChildren = $carousel.children().length;
+//         var windowWidth = $(window).width();
+
+//         if ((numChildren > 5 && windowWidth > 992) || (numChildren > 3 && windowWidth <= 992 && windowWidth > 768) || (numChildren > 2 && windowWidth <= 768)) {
+//             $carousel.addClass('arrows');
+//         } else {
+//             $carousel.removeClass('arrows');
+//         }
+//     });
+// }
 
 function updateCarouselClasses() {
     $('.carousel:not(.slick-initialized)').each(function() {
@@ -107,7 +131,7 @@ function updateCarouselClasses() {
         var numChildren = $carousel.children().length;
         var windowWidth = $(window).width();
 
-        if ((numChildren > 5 && windowWidth > 992) || (numChildren > 3 && windowWidth <= 992 && windowWidth > 768) || (numChildren > 2 && windowWidth <= 768)) {
+        if ((numChildren > 3 && windowWidth > 1250) || (numChildren > 2 && windowWidth <= 1250 && windowWidth > 600)) {
             $carousel.addClass('arrows');
         } else {
             $carousel.removeClass('arrows');
@@ -192,6 +216,7 @@ sameHeight();
 
 readMore();
 shippingAdressAlertToggle();
+removeTabCard();
 
 
 // offset der fixed jumpingNav 

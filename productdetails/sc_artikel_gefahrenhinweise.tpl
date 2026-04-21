@@ -1,10 +1,10 @@
 {* GPSR *}
 {if isset($gpsrData) && (count($gpsrData[$Artikel->kArtikel]['manufacturer']) > 0 || count($gpsrData[$Artikel->kArtikel]['responsibleperson']) > 0)}
 	<div id="herstellerInformationen">
-		<div class="attribut" id="herstellerinformationen">
+		<div class="attribut">
 			<div class="card">
 				<div class="card-header" aria-expanded="false" aria-controls="tab-herstellerinformationen" data-toggle="collapse" data-target="#tab-herstellerinformationen">
-					<strong>{$langGPSRManufacturerLabel}</strong>
+					{$langGPSRManufacturerLabel}
 				</div>
 				<div class="collapse" id="tab-herstellerinformationen" data-parent="#herstellerInformationen">
 					<div class="card-body">
@@ -27,10 +27,10 @@
 
 	{if ($sicherheitshinweis|@strlen > 0) || ($Artikel->FunktionsAttribute.bild|@strlen > 0) || ($Artikel->FunktionsAttribute.link|@strlen > 0)}
 		<div id="sicherheitshinweise">
-			<div class="attribut" id="sicherheitshinweise">
+			<div class="attribut">
 				<div class="card">
 					<div class="card-header" aria-expanded="false" aria-controls="tab-sicherheitshinweise" data-toggle="collapse" data-target="#tab-sicherheitshinweise">
-						<strong>{lang key='sicherheitshinweise' section='custom'}</strong>
+						{lang key='sicherheitshinweise' section='custom'}
 					</div>
 					<div class="collapse" id="tab-sicherheitshinweise" data-parent="#sicherheitshinweise">
 						<div class="card-body">

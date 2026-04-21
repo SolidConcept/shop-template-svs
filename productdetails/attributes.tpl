@@ -2,13 +2,9 @@
 
 {block name='productdetails-attributes-table'}
 
-    {* Überschrift *}
-    <div id="technische-daten"></div>
-    <h2 class="h3">{lang key="technische-daten" section="global"}</h2>
-
     {* Wrapper *}
     <div class="tableWrapper">
-        <table class="table table-sm table-striped table-bordered-outline">
+        <table class="table table-sm table-striped mb-0">
             {if $Einstellungen.artikeldetails.merkmale_anzeigen === 'Y'}
                 {block name='productdetails-attributes-characteristics'}
                     {foreach $Artikel->oMerkmale_arr as $characteristic}
@@ -141,5 +137,6 @@
     </div>
 
     {* Gefahrenhinweise hinzugefügt *}
-    {include file="productdetails/sc_artikel_gefahrenhinweise.tpl"}
+    {* Verschoben in tabs.tpl *}
+    {* {include file="productdetails/sc_artikel_gefahrenhinweise.tpl"} *}
 {/block}

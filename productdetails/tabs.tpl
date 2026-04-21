@@ -1,7 +1,7 @@
 {extends file="{$parent_template_path}/productdetails/tabs.tpl"}
 
 {* jumpingNav ergänzt *}
-{block name='productdetails-tabs-content' prepend}
+{* {block name='productdetails-tabs-content' prepend}
   <div class="jumpingNav">
     <ul>
       <li class="active">
@@ -24,116 +24,206 @@
       </li>
     </ul>
   </div>
-{/block}
+{/block} *}
 
-
-{* Card-Element(e) entfernt *}
 {block name='productdetails-tabs-no-tabs'}
-  {container class="{if $Einstellungen.template.theme.left_sidebar === 'Y' && $boxesLeftActive}container-plus-sidebar{/if}"}
-      {* <div class="accordion" id="tabAccordion"{$quickViewIdPostfix}> *}
-          {if $useDescription}
-              {block name='productdetails-tabs-description'}
-                  {* {card no-body=true}
-                      {cardheader id="tab-description-head"
-                          data=["toggle" => "collapse",
-                              "target"=>"#tab-description"
-                          ]
-                          aria=["expanded" => "{if $setActiveClass.description}true{else}false{/if}",
-                              "controls" => "tab-description"
-                          ]
-                      } *}
-                          <h2 class="h3">{lang key='description' section='productDetails'}</h2>
-                      {* {/cardheader} *}
-                      {collapse id="tab-description"|cat:$quickViewIdPostfix
-                                visible=$setActiveClass.description
-                            data=["parent"=>"#tabAccordion"|cat:$quickViewIdPostfix]
-                            aria=["labelledby"=>"tab-description-head"|cat:$quickViewIdPostfix]
+    {container class="{if $Einstellungen.template.theme.left_sidebar === 'Y' && $boxesLeftActive}container-plus-sidebar{/if}"}
+        <div class="row">
+            <div class="col-12 col-md-6">
+                {if $useDescription}
+                    {block name='productdetails-tabs-description'}
+                        <h2 class="h3">{lang key='description' section='productDetails'}</h2>
+                        {block name='productdetails-tabs-card-description'}
+                            {block name='productdetails-tabs-card-description-content'}
+                                {opcMountPoint id='opc_before_desc'}
+                                <div class="desc" id="desc">
+                                    {$Artikel->cBeschreibung}
+                                    {if $useDescriptionWithMediaGroup}
+                                        {if $Artikel->cBeschreibung|strlen > 0}
+                                            <hr>
+                                        {/if}
+                                        {foreach $Artikel->getMediaTypes() as $mediaType}
+                                            <div class="media">
+                                                {block name='productdetails-tabs-description-include-mediafile'}
+                                                    {include file='productdetails/mediafile.tpl'}
+                                                {/block}
+                                            </div>
+                                        {/foreach}
+                                    {/if}
+                                </div>
+                                {opcMountPoint id='opc_after_desc'}
+                            {/block}
+                        {/block}
+                    {/block}
+                {/if}
+            </div>
+
+            {* Rechte Spalte: Cards *}
+            <div class="col-12 col-md-6 cardList">
+              {* Technische Daten *}
+                {card no-body=true}
+                    {cardheader id="tab-technische-daten-head"
+                        data=["toggle" => "collapse",
+                            "target" => "#tab-technische-daten-content"
+                        ]
+                        aria=["expanded" => "true",
+                            "controls" => "tab-technische-daten-content"
+                        ]
                         }
-                          {* {cardbody} *}
-                              {block name='productdetails-tabs-card-description'}
-                                  {block name='productdetails-tabs-card-description-content'}
-                                      {opcMountPoint id='opc_before_desc'}
-                                      <div class="desc" id="desc">
-                                          {$Artikel->cBeschreibung}
-                                          {if $useDescriptionWithMediaGroup}
-                                              {if $Artikel->cBeschreibung|strlen > 0}
-                                                  <hr>
-                                              {/if}
-                                              {foreach $Artikel->getMediaTypes() as $mediaType}
-                                                  <div class="media">
-                                                      {block name='productdetails-tabs-description-include-mediafile'}
-                                                          {include file='productdetails/mediafile.tpl'}
-                                                      {/block}
-                                                  </div>
-                                              {/foreach}
-                                          {/if}
-                                      </div>
-                                      {opcMountPoint id='opc_after_desc'}
+                        <span id="technische-daten">{lang key="technische-daten" section="global"}</span>
+                    {/cardheader}
+                    {collapse id="tab-technische-daten-content"|cat:$quickViewIdPostfix visible=true}
+                        {cardbody}
+                            {block name='productdetails-tabs-card-description-attributes'}
+                                {block name='productdetails-tabs-include-attributes'}
+                                    {include file='productdetails/attributes.tpl' tplscope='details'
+                                    showProductWeight=$showProductWeight showShippingWeight=$showShippingWeight
+                                    dimension=$dimension showAttributesTable=$showAttributesTable}
+                                {/block}
+                            {/block}
+                        {/cardbody}
+                    {/collapse}
+                {/card}
 
-                                      {* Info-Banner ergänzt *}
-                                      {include file="snippets/sc_info_banner.tpl"}
-                                  {/block}
-                                  {block name='productdetails-tabs-card-description-attributes'}
-                                      {block name='productdetails-tabs-include-attributes'}
-                                          {include file='productdetails/attributes.tpl' tplscope='details'
-                                          showProductWeight=$showProductWeight showShippingWeight=$showShippingWeight
-                                          dimension=$dimension showAttributesTable=$showAttributesTable}
-                                      {/block}
-                                  {/block}
-                              {/block}
-                          {* {/cardbody} *}
-                      {/collapse}
-                  {* {/card} *}
-              {/block}
-          {/if}
+                {include file="productdetails/sc_artikel_gefahrenhinweise.tpl"}
 
-            {* Individuelle Blöcke Downloads und Anwendungen *}
+                {* Downloads *}
+                {if $useMediaGroup}
+                    {block name='productdetails-tabs-media-gorup'}
+                        {foreach $Artikel->getMediaTypes() as $mediaType}
+                            {$cMedienTypId = $mediaType->name|seofy}
+                            {card no-body=true}
+                                {cardheader id="tab-{$cMedienTypId}-head"
+                                    data=["toggle" => "collapse",
+                                        "target" => "#tab-{$cMedienTypId}"
+                                    ]
+                                    aria=["expanded" => "{if $setActiveClass.mediaGroup && $mediaType@first}true{else}false{/if}",
+                                        "controls" => "tab-{$cMedienTypId}"
+                                    ]
+                                }
+                                Downloads
+                                {/cardheader}
+                                {collapse id="tab-{$cMedienTypId}"|cat:$quickViewIdPostfix
+                                    visible=($setActiveClass.mediaGroup && $mediaType@first)
+                                }
+                                {cardbody}
+                                    {block name='productdetails-tabs-include-mediafile'}
+                                        <div id="downloads">{include file='productdetails/mediafile.tpl'}</div>
+                                    {/block}
+                                {/cardbody}
+                                {/collapse}
+                            {/card}
+                        {/foreach}
+                        {* <div class="innerWrapper">{opcMountPoint id='opc_download'}</div> *}
+                    {/block}
+                {/if}
 
-            {* Downloads neue Position ab Shop 5.2 *}
-            {if $useMediaGroup}
-                {block name='productdetails-tabs-media-gorup'}
-                    <div id="downloads">
-                        <h2 class="h3">{lang section='productDownloads' key='downloadSection'}</h2>
-
-                    {foreach $Artikel->getMediaTypes() as $mediaType}
-                        {$cMedienTypId = $mediaType->name|seofy}
-                        {* {card no-body=true}
-                            {cardheader id="tab-{$cMedienTypId}-head"
+              {* Einsatzgebiete*}
+                <div id="anwendungen">
+                    {card no-body=true}
+                        {cardheader id="tab-anwendungen-head"
+                            data=["toggle" => "collapse",
+                                "target" => "#tab-anwendungen-content"
+                            ]
+                            aria=["expanded" => "false",
+                                "controls" => "tab-anwendungen-content"
+                            ]
+                        }
+                        Anwendungen
+                        {/cardheader}
+                        {collapse id="tab-anwendungen-content"|cat:$quickViewIdPostfix visible=false}
+                            {cardbody}
+                            <div class="innerWrapper">{opcMountPoint id='opc_anwendungen'}</div>
+                            {/cardbody}
+                        {/collapse}
+                    {/card}
+                </div>
+              {* Passende Produkte / Zubehör: XSell-Gruppen aus details.tpl *}
+                {if isset($Xselling->Standard->XSellGruppen) && count($Xselling->Standard->XSellGruppen) > 0}
+                    {foreach $Xselling->Standard->XSellGruppen as $Gruppe}
+                        {$xsellCardId = 'tab-xsell-'|cat:$Gruppe@iteration}
+                        {card no-body=true}
+                            {cardheader id="{$xsellCardId}-head"
                                 data=["toggle" => "collapse",
-                                    "target"=>"#tab-{$cMedienTypId}"
+                                    "target" => "#{$xsellCardId}-content"
                                 ]
-                                aria=["expanded" => "{if $setActiveClass.mediaGroup && $mediaType@first}true{else}false{/if}",
-                                    "controls" => "tab-{$cMedienTypId}"
+                                aria=["expanded" => "false",
+                                    "controls" => "{$xsellCardId}-content"
                                 ]
                             }
+                            {$Gruppe->Name}
                             {/cardheader}
-                            {collapse id="tab-{$cMedienTypId}"|cat:$quickViewIdPostfix
-                                    visible=($setActiveClass.mediaGroup && $mediaType@first)
-                                    data=["parent"=>"#tabAccordion"|cat:$quickViewIdPostfix]
-                                    aria=["labelledby"=>"tab-{$cMedienTypId}-head"|cat:$quickViewIdPostfix]
-                                }
-                                {cardbody} *}
-                                    {block name='productdetails-tabs-include-mediafile'}
-                                        {include file='productdetails/mediafile.tpl'}
-                                    {/block}
-                                {* {/cardbody}
+                            {collapse id="{$xsellCardId}-content"|cat:$quickViewIdPostfix visible=false}
+                                {cardbody}
+                                    <div class="recommendations">
+                                        {include file='snippets/product_slider.tpl'
+                                            class='x-supplies'
+                                            id='slider-xsell-group-'|cat:$Gruppe@iteration
+                                            productlist=$Gruppe->Artikel
+                                            title=$Gruppe->Name}
+                                    </div>
+                                {/cardbody}
                             {/collapse}
-                        {/card} *}
+                        {/card}
                     {/foreach}
+                {/if}
 
-                        <div class="innerWrapper">{opcMountPoint id='opc_download'}</div>
-                    </div>
+              {* Kunden kauften auch *}
+              {if isset($Xselling->Kauf->Artikel) && count($Xselling->Kauf->Artikel) > 0}
+                  {lang key='customerWhoBoughtXBoughtAlsoY' section='productDetails' assign='kauftitel'}
+                  {card no-body=true}
+                      {cardheader id="tab-xsell-kauf-head"
+                          data=["toggle" => "collapse",
+                              "target" => "#tab-xsell-kauf-content"
+                          ]
+                          aria=["expanded" => "false",
+                              "controls" => "tab-xsell-kauf-content"
+                          ]
+                      }
+                          {$kauftitel}
+                      {/cardheader}
+                      {collapse id="tab-xsell-kauf-content"|cat:$quickViewIdPostfix visible=false}
+                          {cardbody}
+                              {include file='snippets/product_slider.tpl'
+                                  class='x-sell'
+                                  id='slider-xsell'
+                                  productlist=$Xselling->Kauf->Artikel
+                                  title=$kauftitel}
+                          {/cardbody}
+                      {/collapse}
+                  {/card}
+              {/if}
 
-                    
-                {/block}
-            {/if}
-
-            {* SC Anwendungen *}
-            <div id="anwendungen">
-                <hr>
-                <h2 class="h3">{lang section='custom' key='anwendungen'}</h2>
-                <div class="innerWrapper">{opcMountPoint id='opc_anwendungen'}</div>
+              {* Ähnliche Artikel *}
+              {if isset($oAehnlicheArtikel_arr) && count($oAehnlicheArtikel_arr) > 0}
+                  {lang key='RelatedProducts' section='productDetails' assign='aehnlichtitel'}
+                  {card no-body=true}
+                      {cardheader id="tab-related-head"
+                          data=["toggle" => "collapse",
+                              "target" => "#tab-related-content"
+                          ]
+                          aria=["expanded" => "false",
+                              "controls" => "tab-related-content"
+                          ]
+                      }
+                          {$aehnlichtitel}
+                      {/cardheader}
+                      {collapse id="tab-related-content"|cat:$quickViewIdPostfix visible=false}
+                          {cardbody}
+                              {include file='snippets/product_slider.tpl'
+                                  class='x-related'
+                                  id='slider-related'
+                                  productlist=$oAehnlicheArtikel_arr
+                                  title=$aehnlichtitel}
+                          {/cardbody}
+                      {/collapse}
+                  {/card}
+              {/if}
             </div>
+        </div>
+
+        {* Info-Banner ergänzt *}
+        {include file="snippets/sc_info_banner.tpl"}
 
           {if !empty($separatedTabs)}
               {block name='productdetails-tabs-separated-tabs'}

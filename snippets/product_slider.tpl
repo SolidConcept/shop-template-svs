@@ -19,19 +19,11 @@
 
     {assign var="slickOptions" value='{
                                     "infinite": true,
-                                    "slidesToShow": 5,
-                                    "slidesToScroll": 5,
+                                    "slidesToShow": 3,
+                                    "slidesToScroll": 3,
                                     "responsive": [
                                         {
-                                            "breakpoint": 992,
-                                            "settings": {
-                                                "slidesToShow": 3,
-                                                "slidesToScroll": 3,
-                                                "infinite": true
-                                            }
-                                        },
-                                        {
-                                            "breakpoint": 768,
+                                            "breakpoint": 1250,
                                             "settings": {
                                                 "slidesToShow": 2,
                                                 "slidesToScroll": 2,
