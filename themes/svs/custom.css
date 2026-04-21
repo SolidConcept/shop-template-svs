@@ -1889,6 +1889,10 @@ body[data-page="1"] #content-wrapper .breadcrumb-container .breadcrumb-wrapper .
   padding: 0 !important;
 }
 
+#anwendungen .card .card-header {
+  border-bottom: none !important;
+}
+
 .anwendungen {
   display: flex;
   justify-content: center;
@@ -1904,11 +1908,11 @@ body[data-page="1"] #content-wrapper .breadcrumb-container .breadcrumb-wrapper .
 .anwendungen .col, .anwendungen.opc-Container > div {
   padding-left: 16px;
   padding-right: 16px;
-  margin-bottom: 32px;
+  margin-top: 1rem;
 }
 .anwendungen .col.col-xl-2, .anwendungen .col.col-xl-3, .anwendungen .col.col-xl-4, .anwendungen .col.col-xl-6, .anwendungen.opc-Container > div.col-xl-2, .anwendungen.opc-Container > div.col-xl-3, .anwendungen.opc-Container > div.col-xl-4, .anwendungen.opc-Container > div.col-xl-6 {
-  flex: 0 0 25%;
-  max-width: 25%;
+  flex: 0 0 50%;
+  max-width: 50%;
 }
 .anwendungen .linkBox {
   margin-bottom: 0px !important;

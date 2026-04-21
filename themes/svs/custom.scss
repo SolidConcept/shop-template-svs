@@ -1939,10 +1939,10 @@ body[data-page="1"] {
                             }
                         }
                     }
-                    .col-12 {
-                        // flex: 0 0 30%;
-                        // max-width: 30%;
-                    }
+                    // .col-12 {
+                    //     flex: 0 0 30%;
+                    //     max-width: 30%;
+                    // }
                 }
             }
             a {
@@ -2277,9 +2277,18 @@ body[data-page="1"] {
     }
 }
 
+#anwendungen{
+    .card{
+        .card-header{
+            border-bottom: none!important;
+        }
+    }
+}
+
 .anwendungen {
     display: flex;
     justify-content: center;
+
     &.opc-Container {
         margin-bottom: 32px;
         >div {
@@ -2292,13 +2301,14 @@ body[data-page="1"] {
     &.opc-Container>div {
         padding-left: 16px;
         padding-right: 16px;
-        margin-bottom: 32px;
+        margin-top: 1rem;
+
         &.col-xl-2,
         &.col-xl-3,
         &.col-xl-4,
         &.col-xl-6 {
-            flex: 0 0 25%;
-            max-width: 25%;
+            flex: 0 0 50%;
+            max-width: 50%;
         }
     }
     .linkBox {

@@ -52,6 +52,11 @@
                                     {/if}
                                 </div>
                                 {opcMountPoint id='opc_after_desc'}
+                                {if $useMediaGroup}
+                                    <a href="#tab-PDF-head" class="btn d-md-none mt-3 btn-downloads-scroll">
+                                        <i class="fas fa-file-download"></i> Zu den Downloads
+                                    </a>
+                                {/if}
                             {/block}
                         {/block}
                     {/block}

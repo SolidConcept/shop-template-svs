@@ -236,6 +236,15 @@ $('header .navbar-nav a').bind('click', function() {
     }
 });
 
+// Downloads-Button: Akkordeon öffnen, nativer Scroll bleibt via href
+$('.btn-downloads-scroll').on('click', function() {
+    var targetId = $(this).attr('href');
+    var collapseTarget = $(targetId).data('target');
+    if (collapseTarget) {
+        $(collapseTarget).collapse('show');
+    }
+});
+
 // scrollTo
 $('.jumpingNav a, a.scrollTo, .scrollTo a').unbind();
 $('.jumpingNav a, a.scrollTo, .scrollTo a').off();
