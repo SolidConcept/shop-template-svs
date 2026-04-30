@@ -19,17 +19,9 @@
 
     {assign var="slickOptions" value='{
                                     "infinite": true,
-                                    "slidesToShow": 3,
-                                    "slidesToScroll": 3,
+                                    "slidesToShow": 2,
+                                    "slidesToScroll": 2,
                                     "responsive": [
-                                        {
-                                            "breakpoint": 1250,
-                                            "settings": {
-                                                "slidesToShow": 2,
-                                                "slidesToScroll": 2,
-                                                "infinite": true
-                                            }
-                                        },
                                         {
                                             "breakpoint": 600,
                                             "settings": {

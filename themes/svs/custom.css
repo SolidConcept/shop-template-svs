@@ -330,6 +330,9 @@ hr.yellow {
   background-color: rgb(254.2048192771, 193.7710843373, 57.7951807229);
   color: #fff;
 }
+.btn i {
+  margin-right: 5px;
+}
 
 .btn-primary {
   color: #fff;
@@ -1421,9 +1424,6 @@ body[data-page="18"] #content-wrapper #content {
 .slick-slider-other .carousel:not(.slick-initialized) .product-wrapper.text-center-util {
   text-align: left;
 }
-.slick-slider-other .carousel:not(.arrows) {
-  justify-content: center !important;
-}
 .slick-slider-other .slider-no-preview .slick-list {
   width: 100%;
 }
@@ -1449,8 +1449,8 @@ body[data-page="18"] #content-wrapper #content {
   justify-content: center;
 }
 .recommendations .carousel:not(.slick-initialized).slick-type-product .product-wrapper {
-  width: 33.3333333333%;
-  min-width: 33.3333333333%;
+  width: 50%;
+  min-width: 50%;
 }
 .recommendations .carousel:not(.slick-initialized).arrows::before, .recommendations .carousel:not(.slick-initialized).arrows::after {
   font-family: "Font Awesome 5 Free";
@@ -1736,6 +1736,13 @@ body[data-page="1"] #content-wrapper .breadcrumb-container .breadcrumb-wrapper .
 #result-wrapper .mediafiles-pdf .row .col-md-6 {
   flex: 0 0 100%;
   max-width: 100%;
+}
+#result-wrapper .mediafiles-pdf.card {
+  border: unset !important;
+  padding: 0 0 1rem;
+}
+#result-wrapper .mediafiles-pdf .card-body .card-title {
+  display: none;
 }
 #result-wrapper .product-attributes {
   margin-bottom: 75px;
@@ -3294,4 +3301,4 @@ body[data-page="3"] #alert-list {
 }
 .grey a:hover {
   color: #aaaaaa;
-}
+}/*# sourceMappingURL=custom.css.map */

@@ -53,9 +53,9 @@
                                 </div>
                                 {opcMountPoint id='opc_after_desc'}
                                 {if $useMediaGroup}
-                                    <a href="#tab-PDF-head" class="btn d-md-none mt-3 btn-downloads-scroll">
+                                    {* <a href="#tab-PDF-head" class="btn d-md-none mt-3 btn-downloads-scroll">
                                         <i class="fas fa-file-download"></i> Zu den Downloads
-                                    </a>
+                                    </a> *}
                                 {/if}
                             {/block}
                         {/block}
@@ -71,13 +71,13 @@
                         data=["toggle" => "collapse",
                             "target" => "#tab-technische-daten-content"
                         ]
-                        aria=["expanded" => "true",
+                        aria=["expanded" => "false",
                             "controls" => "tab-technische-daten-content"
                         ]
                         }
                         <span id="technische-daten">{lang key="technische-daten" section="global"}</span>
                     {/cardheader}
-                    {collapse id="tab-technische-daten-content"|cat:$quickViewIdPostfix visible=true}
+                    {collapse id="tab-technische-daten-content"|cat:$quickViewIdPostfix visible=false}
                         {cardbody}
                             {block name='productdetails-tabs-card-description-attributes'}
                                 {block name='productdetails-tabs-include-attributes'}
@@ -89,8 +89,6 @@
                         {/cardbody}
                     {/collapse}
                 {/card}
-
-                {include file="productdetails/sc_artikel_gefahrenhinweise.tpl"}
 
                 {* Downloads *}
                 {if $useMediaGroup}
@@ -122,6 +120,9 @@
                         {* <div class="innerWrapper">{opcMountPoint id='opc_download'}</div> *}
                     {/block}
                 {/if}
+
+                {include file="productdetails/sc_artikel_gefahrenhinweise.tpl"}
+                
 
               {* Einsatzgebiete*}
                 <div id="anwendungen">

@@ -481,6 +481,9 @@ hr {
             color: #fff;
         }
     }
+    i{
+        margin-right: 5px;
+    }
 }
 
 .btn-primary {
@@ -1710,9 +1713,9 @@ body[data-page="18"] {
             }
         }
     }
-    .carousel:not(.arrows) {  
-        justify-content: center !important;
-    }
+    // .carousel:not(.arrows) {  
+    //     justify-content: center !important;
+    // }
     .slider-no-preview {
         .slick-list {
             width: 100%;
@@ -1743,8 +1746,8 @@ body[data-page="18"] {
             justify-content: center;
             &.slick-type-product {
                 .product-wrapper {
-                    width: calc(100% / 3);
-                    min-width: calc(100% / 3);
+                    width: calc(100% / 2);
+                    min-width: calc(100% / 2);
                     
                     // &:nth-child(4) {
                     //     opacity: 0;
@@ -2099,6 +2102,15 @@ body[data-page="1"] {
             .col-md-6 {
                 flex: 0 0 100%;
                 max-width: 100%;
+            }
+        }
+        &.card{
+            border: unset !important;
+            padding: 0 0 1rem;
+        }
+        .card-body{
+            .card-title{
+                display: none;
             }
         }
     }
