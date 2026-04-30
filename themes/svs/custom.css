@@ -346,6 +346,7 @@ hr.yellow {
 .btn-outline-primary {
   color: #feb207;
   background-color: #fff;
+  border: 1px solid #feb207;
 }
 .btn-outline-primary:hover, .btn-outline-primary:active {
   color: #fff;
@@ -2107,12 +2108,16 @@ body[data-page="3"] #alert-list {
   flex: 0 0 100%;
   max-width: 100%;
 }
+.is-checkout .checkout-button-row {
+  width: 100%;
+}
 .is-checkout #order-confirm .card-header .h3 {
   font-size: 20px;
 }
 .is-checkout #order-confirm .card-header .btn {
   background: none;
   padding: 0;
+  color: #565656;
 }
 .is-checkout #order-confirm .card-header .btn:hover {
   background: none;
@@ -3301,4 +3306,4 @@ body[data-page="3"] #alert-list {
 }
 .grey a:hover {
   color: #aaaaaa;
-}/*# sourceMappingURL=custom.css.map */
+}

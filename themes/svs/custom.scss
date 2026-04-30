@@ -499,6 +499,7 @@ hr {
 .btn-outline-primary {
     color: $yellow;
     background-color: #fff;
+    border: 1px solid $yellow;
     &:hover,
     &:active {
         color: #fff;
@@ -2570,6 +2571,10 @@ body[data-page="3"] {
         flex: 0 0 100%;
         max-width: 100%;
     }
+    .checkout-button-row{
+        width: 100%;
+    }
+
     #order-confirm {
         .card-header {
             .h3 {
@@ -2578,6 +2583,7 @@ body[data-page="3"] {
             .btn {
                 background: none;
                 padding: 0;
+                color: $grey;
                 &:hover {
                     background: none;
                     color: $yellow;
